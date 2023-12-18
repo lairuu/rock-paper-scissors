@@ -1,19 +1,19 @@
-function computerSelection() {
+function getComputerChoice() {
     let randomNumber = (Math.random())
 
-    let computerMove = ''
+    let computerChoice = ''
 
     if (randomNumber < 1/3) {
-        computerMove = 'Rock'
+        computerChoice = 'Rock'
     }
     else if (randomNumber > 1/3 && randomNumber < 2/3) {
-        computerMove = 'Paper'
+        computerChoice = 'Paper'
     }
     else if (randomNumber > 2/3) {
-        computerMove = 'Scissors'
+        computerChoice = 'Scissors'
     }
 
-    console.log(computerMove)
+    console.log(computerChoice)
 }
 
-computerSelection()
+getComputerChoice()
