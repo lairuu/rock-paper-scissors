@@ -1,10 +1,12 @@
 let playerMove = ''
 let computerMove = ''
 let playerScore = 0
+let computerScore = 0
 
 let playRock = document.querySelector("#rock")
 let playPaper = document.querySelector("#paper")
 let playScissors = document.querySelector("#scissors")
+let resultDisplay = document.querySelector("#result")
 
 playRock.addEventListener("click", () => {
     playerMove = 'rock';
@@ -36,24 +38,41 @@ function pickComputerMove() {
     }
 }
 
+function resetScore() {
+    playerScore = 0
+    computerScore = 0
+}
+
+function checkScore() {
+    if (playerScore >= 5) {
+        resultDisplay.textContent = `You won the game ! Your score : ${playerScore} Computer's score =  ${computerScore}`
+        resetScore()
+        
+    } else if (computerScore >= 5) {
+        resultDisplay.textContent = `You lost the game ! Try again. Your score : ${playerScore} Computer's score =  ${computerScore}`
+        resetScore()
+    } 
+}
+
 function playGame() {
 
     pickComputerMove()
     
     if (playerMove === computerMove) {
-        console.log(`It's a tie !`)
+        resultDisplay.textContent = `It's a tie ! Your score : ${playerScore} Computer's score =  ${computerScore}`
     } else if (playerMove === 'rock' && computerMove === 'scissors' ) {
-        console.log(`You win !`)
+        resultDisplay.textContent = `You win ! Your score : ${playerScore} Computer's score =  ${computerScore}`
         playerScore++
     } else if (playerMove === 'paper' && computerMove === 'rock') {
-        console.log(`You win !`)
+        resultDisplay.textContent = `You win ! Your score : ${playerScore} Computer's score =  ${computerScore}`
         playerScore++
     } else if (playerMove === 'scissors' && computerMove === 'paper') {
-        console.log(`You win !`)
+        resultDisplay.textContent = `You win ! Your score : ${playerScore} Computer's score =  ${computerScore}`
         playerScore++
     } else {
-        console.log(`You lose !`)
+        resultDisplay.textContent = `You lose ! Your score : ${playerScore} Computer's score =  ${computerScore}`
+        computerScore++
     }
 
-    console.log(playerScore);
+    checkScore()
 }
