@@ -45,11 +45,11 @@ function resetScore() {
 
 function checkScore() {
     if (playerScore >= 5) {
-        resultDisplay.textContent = `You won the game ! Your score : ${playerScore} Computer's score =  ${computerScore}`
+        resultDisplay.textContent = `You won the game ! Your score : ${playerScore} Computer's score :  ${computerScore}`
         resetScore()
         
     } else if (computerScore >= 5) {
-        resultDisplay.textContent = `You lost the game ! Try again. Your score : ${playerScore} Computer's score =  ${computerScore}`
+        resultDisplay.textContent = `You lost the game ! Try again. Your score : ${playerScore} Computer's score :  ${computerScore}`
         resetScore()
     } 
 }
@@ -59,18 +59,18 @@ function playGame() {
     pickComputerMove()
     
     if (playerMove === computerMove) {
-        resultDisplay.textContent = `It's a tie ! Your score : ${playerScore} Computer's score =  ${computerScore}`
+        resultDisplay.textContent = `It's a tie ! Your score : ${playerScore} Computer's score :  ${computerScore}`
     } else if (playerMove === 'rock' && computerMove === 'scissors' ) {
-        resultDisplay.textContent = `You win ! Your score : ${playerScore} Computer's score =  ${computerScore}`
+        resultDisplay.textContent = `You win ! Your score : ${playerScore} Computer's score :  ${computerScore}`
         playerScore++
     } else if (playerMove === 'paper' && computerMove === 'rock') {
-        resultDisplay.textContent = `You win ! Your score : ${playerScore} Computer's score =  ${computerScore}`
+        resultDisplay.textContent = `You win ! Your score : ${playerScore} Computer's score :  ${computerScore}`
         playerScore++
     } else if (playerMove === 'scissors' && computerMove === 'paper') {
-        resultDisplay.textContent = `You win ! Your score : ${playerScore} Computer's score =  ${computerScore}`
+        resultDisplay.textContent = `You win ! Your score : ${playerScore} Computer's score :  ${computerScore}`
         playerScore++
     } else {
-        resultDisplay.textContent = `You lose ! Your score : ${playerScore} Computer's score =  ${computerScore}`
+        resultDisplay.textContent = `You lose ! Your score : ${playerScore} Computer's score :  ${computerScore}`
         computerScore++
     }
 
