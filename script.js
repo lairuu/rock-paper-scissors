@@ -1,123 +1,59 @@
+let playerMove = ''
+let computerMove = ''
+let playerScore = 0
 
-let playerSelection = prompt(`What's your move ?`)
-let computerSelection = ''
+let playRock = document.querySelector("#rock")
+let playPaper = document.querySelector("#paper")
+let playScissors = document.querySelector("#scissors")
 
-function getComputerChoice() {
+playRock.addEventListener("click", () => {
+    playerMove = 'rock';
+    playGame();
+})
+
+playPaper.addEventListener("click", () => {
+    playerMove = 'paper';
+    playGame();
+})
+
+playScissors.addEventListener("click", () => {
+    playerMove = 'scissors';
+    playGame();
+})
+
+
+function pickComputerMove() {
     let randomNumber = (Math.random())
 
-    let computerChoice = ''
-
     if (randomNumber < 1/3) {
-        computerChoice = 'rock'
+        return computerMove = 'rock'
     }
     else if (randomNumber > 1/3 && randomNumber < 2/3) {
-        computerChoice = 'paper'
+        return computerMove = 'paper'
     }
     else if (randomNumber > 2/3) {
-        computerChoice = 'scissors'
+        return computerMove = 'scissors'
     }
-
-    computerSelection = computerChoice;
-    return computerSelection
 }
 
+function playGame() {
 
-
-
-function playRound(playerSelection, computerSelection) {
+    pickComputerMove()
     
-    getComputerChoice()
-
-    if (playerSelection.toLowerCase() === 'rock') {
-       return playerRock(playerSelection, computerSelection);
-
+    if (playerMove === computerMove) {
+        console.log(`It's a tie !`)
+    } else if (playerMove === 'rock' && computerMove === 'scissors' ) {
+        console.log(`You win !`)
+        playerScore++
+    } else if (playerMove === 'paper' && computerMove === 'rock') {
+        console.log(`You win !`)
+        playerScore++
+    } else if (playerMove === 'scissors' && computerMove === 'paper') {
+        console.log(`You win !`)
+        playerScore++
+    } else {
+        console.log(`You lose !`)
     }
-    else if (playerSelection.toLowerCase() === 'scissors') {
-        return playerScissors(playerSelection, computerSelection);
 
-    }
-    else if (playerSelection.toLowerCase() === 'paper') {
-        return playerPaper(playerSelection, computerSelection);
-
-    }
-    else {
-        alert('This is not a valid choice')
-    }
-    
-     
+    console.log(playerScore);
 }
-
-
-
-function playerRock(playerSelection, computerSelection) {
-    if ( playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'paper') {
-        return "Loss";
-    }
-    else if ( playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'scissors') {
-        return "Win";
-    }
-    else if ( playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'rock') {
-        return `Tie`;
-    }
-}
-
-function playerScissors(playerSelection, computerSelection) {
-    if ( playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'paper') {
-        return "Win";
-    }
-    else if ( playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'scissors') {
-        return `Tie`;
-    }
-    else if ( playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'rock') {
-        return 'Loss';
-    }
-}
-
-function playerPaper(playerSelection, computerSelection) {
-    if ( playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'paper') {
-        return `Tie`;
-    }
-    else if ( playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'scissors') {
-        return 'Loss';
-    }
-    else if ( playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'rock') {
-        return 'Win';
-    }
-}
-
-
-function game() {
-    
-    let playerScore = 0
-    let computerScore = 0
-
-
-    for (let i = 0; i < 5; i++) {
-        if (playRound(playerSelection, computerSelection) === "Win") {
-            playerScore++
-            console.log(`Player's win`)
-        } 
-        else if (playRound(playerSelection, computerSelection) === "Loss") {
-            computerScore++
-            console.log(`Computer's win`)
-        }
-        else if (playRound(playerSelection, computerSelection) === "Tie") {
-            console.log('Tie')
-        }
-
-    console.log(playerScore, computerScore)
-}
-    
-    if (playerScore > computerScore) {
-        return 'You win !'
-    }
-    else if (computerScore > playerScore) {
-        return 'You lose !'
-    }
-    else if (computerScore === playerScore) {
-        return `It's a Tie!`
-    }
-}
-
-console.log(game())
-
